@@ -8,10 +8,10 @@ from PIL import Image
 
 
 
-st.set_page_config(layout="wide", page_title="IIIDATA TUTO")
+st.set_page_config(layout="wide", page_title=" IIIDATA TUTO ")
 st.markdown('<style>' + open('./style.css').read() + '</style>', unsafe_allow_html=True)
-background = Image.open('./test2.png')
-st.image(background, width=1000)
+background = Image.open('./test.png')
+st.image(background, width=900)
 
 
 git, linkedin = st.columns(2)
@@ -28,7 +28,7 @@ if os.path.exists('./dataset.csv'):
 
 with st.sidebar:
     
-    tabs = on_hover_tabs(tabName=['Charger les données', 'Analyser', 'Exporter'], 
+    tabs = on_hover_tabs(tabName=['Charger les données', 'Analyser 📊', 'Exporter'], 
                          iconName=['upload file', 'analytics', 'download'], default_choice=0)
     st.image("./iiidata.png")
 
@@ -39,7 +39,7 @@ if tabs == 'Charger les données':
         df = pd.read_csv(file, index_col=None, sep = separator)
         df.to_csv('dataset.csv', index=None)
         if len(df.columns) >= 2 : 
-            st.success("Données chargées correctement, vous pouvez passer à l'analyse")
+            st.success("Données chargées correctement, vous pouvez passer à l'analyse. Rendez-vous dans l'onglet 'ANALYSER' 📊")
         else : 
             st.error('Il semblerait que vous avez sélectionné le mauvais séparateur')
         st.dataframe(df)
@@ -48,10 +48,11 @@ if tabs == 'Charger les données':
         
 
 elif tabs == 'Analyser':
-    st.title("Exploratory Data Analysis")
+    st.header("📊 Exploratory Data Analysis 📊")
     profile_df = df.profile_report()
     st_profile_report(profile_df)
     profile_df.to_file("output.html")
+    st.success("Rapport genéré correctement, rendez-vous dans l'onglet 'EXPORTER' pour télécharger votre rapport 💾 ")
     
 
 elif tabs == 'Exporter':
