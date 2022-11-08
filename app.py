@@ -19,7 +19,7 @@ git.info(" 👆 Récupérez l'intégralité du code ici")
 linkedin.markdown("[![Foo](https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Linkedin_unofficial_colored_svg-48.png)](https://www.linkedin.com/company/iiidata/?viewAsMember=true)")
 linkedin.info(" 👆 N'hésitez pas à nous suivre sur Linkedin ")
 
-st.title("  💻 Faites une première analyse automatisée de vos données 📊 ")
+st.title("  💻 Analyse automatisée de vos données 📊 ")
 
 
 if os.path.exists('./data/dataset.csv'): 
