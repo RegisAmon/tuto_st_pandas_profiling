@@ -8,7 +8,7 @@ from streamlit_pandas_profiling import st_profile_report
 
 
 
-st.set_page_config(layout="wide", page_title=" IIIDATA TUTO ")
+st.set_page_config(layout="wide", page_title=" 💻📊 IIIDATA TUTO ")
 st.markdown('<style>' + open('./style/style.css').read() + '</style>', unsafe_allow_html=True)
 
 
@@ -19,7 +19,7 @@ git.info(" 👆 Récupérez l'intégralité du code ici")
 linkedin.markdown("[![Foo](https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Linkedin_unofficial_colored_svg-48.png)](https://www.linkedin.com/company/iiidata/?viewAsMember=true)")
 linkedin.info(" 👆 N'hésitez pas à nous suivre sur Linkedin ")
 
-st.header("  💻 Faites une première analyse automatisée de vos données 📊 ")
+st.title("  💻 Faites une première analyse automatisée de vos données 📊 ")
 
 
 if os.path.exists('./data/dataset.csv'): 
@@ -32,7 +32,7 @@ with st.sidebar:
     st.image("./style/iiidata.png")
 
 if tabs == 'Charger les données':
-    file = st.file_uploader("Chargez vos données")
+    file = st.file_uploader("Chargez votre fichier .csv")
     separator = st.radio("Si votre dataset ne s'affiche pas correctement, sélectionner le bon séparateur", [",", ";"])
     if file: 
         df = pd.read_csv(file, index_col=None, sep = separator)
@@ -47,7 +47,7 @@ if tabs == 'Charger les données':
         
 
 elif tabs == 'Analyser':
-    st.header("📊 Analyse de la qualité et exploration des données 📊")
+    st.header("Analyse de la qualité et exploration des données")
     profile_df = df.profile_report()
     st_profile_report(profile_df)
     profile_df.to_file("output.html")
@@ -59,6 +59,7 @@ elif tabs == 'Exporter':
         dw = st.download_button("Télécharger le rapport 💾 ", f, "rapport_analyse_data.html")
         if dw : 
             st.balloons()
+            st.success("Rapport correctement téléchargé.")
     
    
     
