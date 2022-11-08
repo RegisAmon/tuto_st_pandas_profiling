@@ -4,14 +4,13 @@ import streamlit as st
 from st_on_hover_tabs import on_hover_tabs
 import os
 from streamlit_pandas_profiling import st_profile_report
-from PIL import Image
+
 
 
 
 st.set_page_config(layout="wide", page_title=" IIIDATA TUTO ")
-st.markdown('<style>' + open('./style.css').read() + '</style>', unsafe_allow_html=True)
-background = Image.open('./test.png')
-st.image(background, width=900)
+st.markdown('<style>' + open('./style/style.css').read() + '</style>', unsafe_allow_html=True)
+
 
 
 git, linkedin = st.columns(2)
@@ -23,14 +22,14 @@ linkedin.info(" 👆 N'hésitez pas à nous suivre sur Linkedin ")
 st.header("  💻 Faites une première analyse automatisée de vos données 📊 ")
 
 
-if os.path.exists('./dataset.csv'): 
-    df = pd.read_csv('dataset.csv', index_col=None)
+if os.path.exists('./data/dataset.csv'): 
+    df = pd.read_csv('./data/dataset.csv', index_col=None)
 
 with st.sidebar:
     
     tabs = on_hover_tabs(tabName=['Charger les données', 'Analyser', 'Exporter'], 
                          iconName=['upload file', 'analytics', 'download'], default_choice=0)
-    st.image("./iiidata.png")
+    st.image("./style/iiidata.png")
 
 if tabs == 'Charger les données':
     file = st.file_uploader("Chargez vos données")
@@ -48,7 +47,7 @@ if tabs == 'Charger les données':
         
 
 elif tabs == 'Analyser':
-    st.header("📊 Exploratory Data Analysis 📊")
+    st.header("📊 Analyse de la qualité et exploration des données 📊")
     profile_df = df.profile_report()
     st_profile_report(profile_df)
     profile_df.to_file("output.html")
