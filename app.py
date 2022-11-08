@@ -28,7 +28,7 @@ if os.path.exists('./dataset.csv'):
 
 with st.sidebar:
     
-    tabs = on_hover_tabs(tabName=['Charger les données', 'Analyser 📊', 'Exporter'], 
+    tabs = on_hover_tabs(tabName=['Charger les données', 'Analyser', 'Exporter'], 
                          iconName=['upload file', 'analytics', 'download'], default_choice=0)
     st.image("./iiidata.png")
 
