@@ -33,14 +33,14 @@ with st.sidebar:
 
 if tabs == 'Charger les données':
     file = st.file_uploader("Chargez votre fichier .csv")
-    separator = st.radio("Si votre dataset ne s'affiche pas correctement, sélectionner le bon séparateur", [",", ";"])
+    #separator = st.radio("Si votre dataset ne s'affiche pas correctement, sélectionner le bon séparateur", [",", ";"])
     if file: 
-        df = pd.read_csv(file, index_col=None, sep = separator)
+        df = pd.read_csv(file, index_col=None, sep = None)
         df.to_csv('dataset.csv', index=None)
-        if len(df.columns) >= 2 : 
-            st.success("Données chargées correctement, vous pouvez passer à l'analyse. Rendez-vous dans l'onglet 'ANALYSER' 📊")
-        else : 
-            st.error('Il semblerait que vous avez sélectionné le mauvais séparateur')
+        # if len(df.columns) >= 2 : 
+        st.success("Données chargées correctement, vous pouvez passer à l'analyse. Rendez-vous dans l'onglet 'ANALYSER' 📊")
+        # else : 
+        #     st.error('Il semblerait que vous avez sélectionné le mauvais séparateur')
         st.dataframe(df)
     
         
